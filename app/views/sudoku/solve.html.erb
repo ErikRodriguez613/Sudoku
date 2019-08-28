@@ -1,0 +1,13 @@
+<h1>Results</h1>
+<%= form_with scope: :sudoku,local:false do |form| %>
+  <table>
+    <%$results.each_with_index do |rowVal, x|%>
+      <tr>
+        <%rowVal.each_with_index do |cellVal,y|%>
+          <td><%= form.number_field("#{x}#{y}", :value => cellVal, in: 1..9, step: 1)%></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+<%= button_to "new game", { action: "setup" }, method: :post %>

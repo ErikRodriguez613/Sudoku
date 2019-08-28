@@ -1,0 +1,19 @@
+<h1>Sudoku Board</h1>
+<%=form_with scope: :sudoku, url: sudoku_check_path, local:true do |form| %>
+  <table>
+    <%$board.each_with_index do |rowVal, x|%>
+      <tr>
+        <%rowVal.each_with_index do |cellVal,y|%>
+          <% if $errors.key?("#{x}#{y}") -%>
+            <td bgcolor = red><%= form.number_field("#{x}#{y}" , :value => cellVal, in: 1..9, step: 1)%></td>
+          <% else %>
+            <td><%= form.number_field("#{x}#{y}" , :value => cellVal, in: 1..9, step: 1)%></td>
+          <% end %>
+        <%end%>
+      </tr>
+    <%end%>
+  </table>
+  <%=form.submit "check" %>
+<%end%>
+<%=button_to "restart", { action: "setup" }, method: :post%>
+<%=button_to "solve", { action: "solve" }, method: :post %>
