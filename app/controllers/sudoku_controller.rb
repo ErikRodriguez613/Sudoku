@@ -21,19 +21,10 @@ class SudokuController < ApplicationController
       end
       $board[row_index.to_i][col_index.to_i] = sub_value
     end
-    logger.info($board[3][1])
-    logger.info($errors)
-    logger.info($errors.key?("31"))
-  end
-
-  def submit
   end
 
   def solve
     $results
     logger.info("returning results")
-  end
-
-  def restart
   end
 end
