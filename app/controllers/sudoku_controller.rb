@@ -8,6 +8,7 @@ class SudokuController < ApplicationController
   end
 
   def check
+    logger.info("Checking board against cache")
     board = params[:sudoku]
     $errors = Hash.new
     for row in board
